@@ -1,67 +1,42 @@
-
-from __future__ import annotations
+# src/config.py
 from pathlib import Path
-from typing import Optional, List, Literal
-from pydantic import BaseModel
+import os
 import yaml
 from dotenv import load_dotenv
 
 load_dotenv()
 
-class DataCfg(BaseModel):
-    source_dir: str = "./data"
-    glob_pattern: str = "**/*.*"
-    allowed_ext: List[str] = [".pdf", ".docx", ".txt", ".md"]
-    chunk_size: int = 1200
-    chunk_overlap: int = 150
+def _bool(x, default=False):
+    if x is None:
+        return default
+    return str(x).lower() in {"1", "true", "yes", "on"}
 
-class EmbeddingsCfg(BaseModel):
-    provider: Literal["sentence-transformers","openai"] = "sentence-transformers"
-    model: str = "sentence-transformers/all-MiniLM-L6-v2"
-    device: str = "auto"
-
-class VectorStoreCfg(BaseModel):
-    type: Literal["chroma"] = "chroma"
-    persist_dir: str = "./.chroma"
-    collection: str = "rag-assistant"
-
-class RetrieverCfg(BaseModel):
-    k: int = 4
-    search_type: Literal["similarity","mmr"] = "similarity"
-
-class LLMCfg(BaseModel):
-    provider: Literal["groq","openai"] = "groq"
-    model: str = "llama-3.1-70b-versatile"
-    temperature: float = 0.2
-    max_tokens: int = 512
-
-class MemoryCfg(BaseModel):
-    enabled: bool = True
-    k: int = 5
-
-class LoggingCfg(BaseModel):
-    level: str = "INFO"
-    json: bool = False
-    dir: str = "./logs"
-
-class ServerCfg(BaseModel):
-    host: str = "0.0.0.0"
-    port: int = 8000
-
-class Settings(BaseModel):
-    data: DataCfg = DataCfg()
-    embeddings: EmbeddingsCfg = EmbeddingsCfg()
-    vectorstore: VectorStoreCfg = VectorStoreCfg()
-    retriever: RetrieverCfg = RetrieverCfg()
-    llm: LLMCfg = LLMCfg()
-    memory: MemoryCfg = MemoryCfg()
-    logging: LoggingCfg = LoggingCfg()
-    server: ServerCfg = ServerCfg()
-
-def load_config(path: str = "config.yaml") -> Settings:
+def load_config(path: str = "config.yaml") -> dict:
     p = Path(path)
     if not p.exists():
-        raise FileNotFoundError(f"Config not found: {path}")
+        raise FileNotFoundError(f"Config file not found: {path}")
     with p.open("r", encoding="utf-8") as f:
-        raw = yaml.safe_load(f) or {}
-    return Settings(**raw)
+        cfg = yaml.safe_load(f) or {}
+
+    # Defaults
+    cfg.setdefault("data", {})
+    cfg.setdefault("vector_store", {})
+    cfg.setdefault("ingestion", {})
+    cfg.setdefault("logging", {})
+    cfg.setdefault("llm", {})
+    cfg.setdefault("memory", {"enabled": True, "k": 5})
+
+    # .env overrides
+    vs = cfg["vector_store"]
+    vs["persist_directory"] = os.getenv("CHROMA_PERSIST_DIR", vs.get("persist_directory", "./.chroma"))
+
+    ing = cfg["ingestion"]
+    ing["chunk_size"] = int(os.getenv("CHUNK_SIZE", ing.get("chunk_size", 1200)))
+    ing["chunk_overlap"] = int(os.getenv("CHUNK_OVERLAP", ing.get("chunk_overlap", 150)))
+
+    log = cfg["logging"]
+    log["dir"] = os.getenv("LOG_DIR", log.get("dir", "./logs"))
+    log["level"] = os.getenv("LOG_LEVEL", log.get("level", "INFO"))
+    log["json"] = _bool(os.getenv("LOG_JSON", log.get("json", False)))
+
+    return cfg

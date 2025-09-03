@@ -1,38 +1,35 @@
+# RAG Assistant (polished)
 
-# RAG Assistant (Polished, v1-style)
-
-A production-ready RAG assistant mirroring the stack and conventions of `rag-v1-main`.
+Production-ready RAG assistant using LangChain + Chroma + Groq, with CLI, API, and Streamlit UI.
 
 ## Stack
-- LangChain + Chroma (vector store)
-- LLM: **Groq** (default). Set `GROQ_API_KEY` in `.env`
-- Embeddings: Sentence-Transformers (default, local) — switchable to OpenAI
+- LangChain + Chroma (persistent vector store)
+- LLM: Groq (default). Optional OpenAI.
+- Embeddings: sentence-transformers (local)
 - Config: `config.yaml` + `.env` (dotenv)
 - CLI: Typer
+- API: FastAPI (Uvicorn)
 - UI: Streamlit
-- API: FastAPI
-- Logging: Loguru (console + rotating file)
-- Docker + Compose
-- Dev tools: pytest, black, flake8, jupyter
+- Logging: Loguru
 
-## Quickstart
-```bash
-python -m venv .venv && source .venv/bin/activate
+## Quickstart (PowerShell)
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 pip install -U pip
 pip install -r requirements.txt
 
-cp .env.example .env
-# set GROQ_API_KEY=... in .env
+Copy-Item .env.example .env
+# set GROQ_API_KEY in .env
 
-# ingest
-python -m rag_v1_style.cli ingest --source ./data --pattern "**/*.*"
+# Ingest documents in ./data
+python cli.py ingest
 
-# ask
-python -m rag_v1_style.cli ask "What is this project about?"
+# Ask a question
+python cli.py query "What is this project about?"
 
-# api
-python -m rag_v1_style.cli serve --host 0.0.0.0 --port 8000
+# Run API
+python cli.py serve
 
-# ui
-python -m rag_v1_style.cli ui
-```
+# Launch UI
+python cli.py web

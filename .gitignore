@@ -1,1 +1,11 @@
 .venv/
+.chroma/
+
+.env
+.env.*
+
+src/_pycache_
+src/db/_pycache_
+src/ingestion/_pycache_
+src/pipeline/_pycache_
+src/utils/_pycache_

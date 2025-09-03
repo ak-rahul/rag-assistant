@@ -1,9 +1,9 @@
+# src/utils/text_splitter.py
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-
-def split_text(text: str, chunk_size: int, chunk_overlap: int):
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=chunk_size, chunk_overlap=chunk_overlap,
-        separators=["\n\n","\n"," ",""]
+def get_splitter(chunk_size: int = 1200, chunk_overlap: int = 150):
+    return RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
+        separators=["\n\n", "\n", ". ", " ", ""],
     )
-    return splitter.split_text(text)

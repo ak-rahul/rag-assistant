@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .pipeline import RAGPipeline
+from pipeline import RAGPipeline
 
 app = FastAPI(title="RAG Assistant API", version="1.0.0")
 pipeline = RAGPipeline()

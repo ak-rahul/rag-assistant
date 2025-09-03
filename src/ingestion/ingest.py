@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Iterable, List
 from langchain.schema import Document
 from .document_loader import load_text
-from ..utils.text_splitter import split_text
+from utils.text_splitter import split_text
 
 def iter_files(source_dir: Path, pattern: str, allowed_ext: Iterable[str]):
     allowed = {e.lower() for e in allowed_ext}

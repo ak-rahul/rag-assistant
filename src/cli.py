@@ -1,7 +1,7 @@
 
 import typer, json, os
 from typing import Optional
-from .pipeline import RAGPipeline
+from pipeline import RAGPipeline
 
 app = typer.Typer(add_completion=False)
 pipeline = RAGPipeline()
@@ -34,7 +34,7 @@ def serve(host: str = "0.0.0.0", port: int = 8000):
 
 @app.command()
 def ui():
-    os.system("streamlit run -m rag_v1_style.ui.app")
+    os.system("streamlit run -m ui.app")
 
 if __name__ == "__main__":
     app()

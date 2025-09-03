@@ -1,6 +1,6 @@
 
 import streamlit as st
-from ..pipeline import RAGPipeline
+from pipeline import RAGPipeline
 
 st.set_page_config(page_title="RAG Assistant", page_icon="🧠", layout="centered")
 st.title("🧠 RAG Assistant (v1-style)")

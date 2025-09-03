@@ -2,12 +2,12 @@
 from pathlib import Path
 from typing import Optional, Dict, Any
 from loguru import logger
-from .config import load_config, Settings
-from .utils.logger import configure as configure_logger
-from .utils.embeddings import build_embeddings
-from .utils.llm import build_llm
-from .vectorstore.chroma_handler import ChromaHandler
-from .ingestion.ingest import ingest_dir
+from config import load_config, Settings
+from utils.logger import configure as configure_logger
+from utils.embeddings import build_embeddings
+from utils.llm import build_llm
+from vectorstore.chroma_handler import ChromaHandler
+from ingestion.ingest import ingest_dir
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory

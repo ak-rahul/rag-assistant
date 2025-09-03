@@ -1,11 +1,11 @@
 .venv/
 .chroma/
 
-src/_pycache_
-src/db/_pycache_
-src/ingestion/_pycache_
-src/pipeline/_pycache_
-src/utils/_pycache_
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
 
 # Environment files
 .env

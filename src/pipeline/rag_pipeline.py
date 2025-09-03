@@ -58,6 +58,7 @@ class RAGPipeline:
                 memory_key="chat_history",
                 return_messages=True,
                 k=memcfg.get("k", 5),
+                output_key="answer",   # 👈 Only log the answer
             )
 
         # LLM
@@ -69,11 +70,12 @@ class RAGPipeline:
             llm=self.llm,
             retriever=self.retriever,
             memory=self.memory,
-            # supply a custom prompt to the question-condensed doc chain
             chain_type="stuff",
             combine_docs_chain_kwargs={"prompt": self.prompt},
             return_source_documents=True,
+            output_key="answer",   # 👈 Added to fix ValueError
         )
+
 
     def _build_llm(self):
         llm_cfg = self.config.get("llm", {})

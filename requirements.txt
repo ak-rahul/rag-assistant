@@ -1,15 +1,29 @@
-streamlit
-langchain
-chromadb
-sentence-transformers
-pypdf
-python-docx
-python-dotenv
-requests
-loguru
-tqdm
-tenacity
-prometheus_client
-flask
-boto3
-pyyaml
+
+# Core
+langchain>=0.2.12
+langchain-community>=0.2.11
+chromadb>=0.5.5
+python-dotenv>=1.0.1
+PyYAML>=6.0.1
+loguru>=0.7.2
+typer>=0.12.3
+streamlit>=1.36.0
+fastapi>=0.112.0
+uvicorn>=0.30.3
+
+# LLM providers (v1-style)
+groq>=0.9.0
+openai>=1.37.1
+
+# Embeddings / parsing
+sentence-transformers>=3.0.1
+torch>=2.3.1
+pypdf>=4.2.0
+python-docx>=1.1.2
+markdown>=3.6
+
+# Dev
+pytest>=8.2.2
+black>=24.8.0
+flake8>=7.0.0
+jupyter>=1.0.0

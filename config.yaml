@@ -1,25 +1,40 @@
-app:
-  title: "RAG System"
-  description: "Retrieval-Augmented Generation for Document QA"
-  model: "llama3-8b-8192
-  host: "0.0.0.0"
-  port: 8501
 
-vector_store:
-  persist_directory: "./data/processed"
-  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
-  top_k: 5
+data:
+  source_dir: ./data
+  glob_pattern: "**/*.*"
+  allowed_ext: [".pdf", ".docx", ".txt", ".md"]
+  chunk_size: 1200
+  chunk_overlap: 150
 
-ingestion:
-  chunk_size: 500
-  chunk_overlap: 50
+embeddings:
+  provider: sentence-transformers
+  model: sentence-transformers/all-MiniLM-L6-v2
+  device: auto
 
-logging:
-  level: INFO
-  json: true
-  dir: "./logs"
+vectorstore:
+  type: chroma
+  persist_dir: ./.chroma
+  collection: rag-assistant
+
+retriever:
+  k: 4
+  search_type: similarity
 
 llm:
   provider: groq
+  model: llama-3.1-70b-versatile
   temperature: 0.2
   max_tokens: 512
+
+memory:
+  enabled: true
+  k: 5
+
+logging:
+  level: INFO
+  json: false
+  dir: ./logs
+
+server:
+  host: 0.0.0.0
+  port: 8000

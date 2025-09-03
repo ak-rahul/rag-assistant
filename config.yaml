@@ -1,0 +1,27 @@
+llm:
+  model: groq
+  temperature: 0.7
+  max_tokens: 512
+
+vector_store:
+  type: chroma
+  persist_directory: ./data/vectors
+  embedding_model: all-MiniLM-L6-v2
+  top_k: 5
+
+ingestion:
+  chunk_size: 500
+  chunk_overlap: 50
+  supported_formats: [pdf, docx, txt, json]
+
+logging:
+  level: INFO
+  log_dir: ./logs
+  json_logs: true
+
+ui:
+  streamlit_port: 8501
+  show_stats: true
+
+cli:
+  interactive: true

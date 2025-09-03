@@ -1,0 +1,8 @@
+typer[all]
+streamlit
+langchain
+chromadb
+PyPDF2
+python-docx
+requests
+PyYAML

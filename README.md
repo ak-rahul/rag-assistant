@@ -35,7 +35,7 @@ rag-assistant/
 ├── requirements.txt       # Dependencies
 ├── scripts/               # Helper scripts
 │   ├── rag.sh 
-|   └── rag.bat
+│   └── rag.bat
 ├── src/
 │   ├── config.py
 │   ├── logger.py

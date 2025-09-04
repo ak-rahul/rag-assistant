@@ -4,3 +4,18 @@
 2025-09-04 00:01:03.782 | INFO     | src.ingestion.ingest:ingest_folder:38 - Added 595 chunks from data\Kali-Linux-Revealed-2021-edition.pdf
 2025-09-04 00:01:06.002 | INFO     | src.ingestion.ingest:ingest_folder:38 - Added 595 chunks from data\Kali-Linux-Revealed-2021-edition.pdf
 2025-09-04 00:02:04.737 | INFO     | src.ingestion.ingest:ingest_folder:38 - Added 595 chunks from data\Kali-Linux-Revealed-2021-edition.pdf
+2025-09-04 18:21:57.456 | INFO     | src.ingestion.ingest:ingest_folder:72 - Added 967 chunks from data\project_1_publications.json
+2025-09-04 18:22:31.992 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:22:32.314 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:04.665 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:09.093 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:28.872 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:29.181 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:46.307 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:23:49.323 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:09.940 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:12.482 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:21.454 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:21.773 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:35.759 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)
+2025-09-04 18:24:38.439 | INFO     | src.ingestion.ingest:ingest_folder:65 - Skipped data\project_1_publications.json (already ingested)

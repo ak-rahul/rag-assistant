@@ -34,10 +34,8 @@ rag-assistant/
 ├── config.yaml            # Config file
 ├── requirements.txt       # Dependencies
 ├── scripts/               # Helper scripts
-│   ├── ingest.sh / .bat
-│   ├── rag.sh / .bat
-│   ├── serve.sh
-│   └── ui.sh
+│   ├── rag.sh 
+|   └── rag.bat
 ├── src/
 │   ├── config.py
 │   ├── logger.py
